@@ -11,9 +11,11 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  overflow: hidden;
 
   color-scheme: light dark;
   background-color: #000000;
+  width: 100%;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

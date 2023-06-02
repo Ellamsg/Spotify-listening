@@ -23,9 +23,9 @@ const SpotifyNowPlaying = (props) => {
 
     return (
         <div className=' text-white h-[100vh] '>
-                 {loading ? <div className=''>
+                 {loading ? <div className='flex justify-center'>
            
-           <p className="pt-[300px] ">Loading...</p>
+           <img className="lg:pt-[120px] pt-[150px] " src='img/Spotify-Loading-Animation_2.gif'/>
        </div>
            :
 
