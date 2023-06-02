@@ -30,11 +30,16 @@ const SpotifyNowPlaying = (props) => {
            :
 
 
-
-            <div className='flex  justify-center relative  h-[100%] '>
+           
+            <div className='flex  justify-center   h-[100%] '>
                  {result.isPlaying ?
                 <div className='  w-full   '>
-                    
+                    <div className='z-10 w-full lg:w-fit lg:left-5  absolute lg:top-5 top-3 flex'>
+
+                    <img className='h-[60px] lg:h-[90px]  ' src="img/newspot.png"/>
+                    <p className='pt-3 lg:pt-5 uppercase'>playing from playlist</p>
+                    </div>
+                      
                     <div className='  flex justify-center  h-[100%]'>
 
 
@@ -45,15 +50,24 @@ const SpotifyNowPlaying = (props) => {
                     <div className='absolute bottom-0  drop w-full p-2 lg:px-6'>
                         <div className=''>
 
-                            <div className='flex gap-1  '>
+                            <div className='flex gap-1 '>
                                 <img className=' rounded-[10px] object-cover w-[100px] h-[100px]' src={result.albumImageUrl}  alt="album-image" />
-                                <div className='lg:pt-0 text-left'>
-                                    < p className='lg:text-4xl' >{result.title}</p>
+                                <div className='lg:pt-0 text-left '>
+                                    <div className='scrolling-limit w-full   '>
+                                     <div className='scrolling lg:w-full w-[300px]'>
+                                     < p className='lg:text-4xl' >{result.title}</p>
+                                     </div>
+                                   
+                                    </div>
+                                    
                                     < p className='lg:text-4xl' >{result.genres}</p>
                                   
                                 </div>
                             </div>
-                            <p className=' text-left pt-2'>{result.artist}</p>
+                            <div className=''>
+                            <p className=' text-left pt-2 .slides'>{result.artist}</p>
+                                </div>
+                          
 
                         </div>
                         <div className='flex justify-between'>
@@ -77,7 +91,11 @@ const SpotifyNowPlaying = (props) => {
 
 
                     </div>
-                </div>  : "Ellams is offline"}
+                </div>  :<div className='pt-[260px]'>
+                    <img className='h-[90px]' src="img/tifylogo.png"/>
+                   <p className='text-2xl'> Ellams is offline</p>
+                    
+                    </div> }
 
 
             </div>
@@ -90,63 +108,6 @@ const SpotifyNowPlaying = (props) => {
         </div>
 
 
-
-
-
-        /*<div className=''>
-
-
-            {loading ? <div className=''>
-           
-                <p className=" ">Loading...</p>
-            </div>
-                :
-
-                <div className='flex justify-center'>
-                {result.isPlaying ?
-                        <div className='bg-red text-green '>
-                  <div className=''>
-                                    <a className=" "  target="_blank">{result.title}</a>
-                                </div>
-                            <div className=''>
-                                <a href={result.songUrl}>
-
-                                <img  className='w-[500px] h-[500px]' src={result.albumImageUrl} alt="album-image" />
-                                <img src={result.artistImageUrl}/>
-                                </a>
-                               
-                            </div>
-
-                            <div className=''>
-                                
-                                <div className=''>
-                                    <p className=" ">{result.artist}</p></div>
-                            </div>
-
-                            <AudioPlayer className='audio'
-                        
-                       src={result.click}
-                           onPlay={e => console.log("onPlay")}
-                           customVolumeControls={[]}
-                           showJumpControls={false}
-                           customAdditionalControls={[]}
-                           timeFormat={[]}
-                           autoPlay={false}
-                           progressJumpSteps={false}
-                           defaultCurrentTime={[]}
-                           defaultDuration={[]}
-                           />
-
-                        </div> : "Ellams is offline"}
-
-                </div>
-            }
-
-
-
-
-
-        </div>*/
 
 
 
