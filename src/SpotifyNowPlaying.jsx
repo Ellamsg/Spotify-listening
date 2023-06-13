@@ -55,17 +55,17 @@ const SpotifyNowPlaying = (props) => {
                                 <div className='lg:pt-0 text-left '>
                                     <div className='scrolling-limit w-full   '>
                                      <div className='scrolling lg:w-full w-[300px]'>
-                                     < p className='lg:text-4xl' >{result.title}</p>
+                                     < p className='lg:text-4xl uppercase' >{result.title}</p>
                                      </div>
                                    
                                     </div>
                                     
-                                    < p className='lg:text-4xl' >{result.genres}</p>
+                                    < p className='lg:text-3xl  uppercase' >{result.genres}</p>
                                   
                                 </div>
                             </div>
                             <div className=''>
-                            <p className=' text-left pt-2 .slides'>{result.artist}</p>
+                            <p className=' text-left pt-2 .slides uppercase'>{result.artist}</p>
                                 </div>
                           
 

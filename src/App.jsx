@@ -3,7 +3,6 @@ import React from 'react'
 import './App.css'
 import SpotifyNowPlaying from './SpotifyNowPlaying'
 
-
 function App() {
 
   return (
