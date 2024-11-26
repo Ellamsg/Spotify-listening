@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { getRecentlyPlayed } from "../SpotifyAPI";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import RecentlyPlayed from "../components/RecentlyPlayed";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,6 +70,8 @@ const About = () => {
   return (
     <div>
       <div className="container">
+
+       
         Recent
         <div className="flex">
           {recent.map((track, index) => (

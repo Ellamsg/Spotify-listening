@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import getNowPlayingItem from "../SpotifyAPI";
 import { getRecentlyPlayed } from "../SpotifyAPI";
+import RecentlyPlayed from "./RecentlyPlayed";
 
 
 const SpotifyNowPlaying = (props) => {
@@ -18,6 +19,15 @@ const SpotifyNowPlaying = (props) => {
         props.client_secret,
         props.refresh_token
       );
+
+      // If no song is playing, stop loader and update state
+      if (!data || !data.isPlaying) {
+        setLoading(false);
+        setResult({});
+        setIsPlaying(false); // Ensure the playback state is false
+        setWave(false);
+        return;
+      }
 
       // If the song changes, stop current playback and update audio
       if (data.title !== result.title) {
@@ -40,7 +50,7 @@ const SpotifyNowPlaying = (props) => {
       }
     };
 
-    // Poll Spotify API every 10 seconds
+    // Poll Spotify API every 25 seconds
     const id = setInterval(fetchNowPlaying, 25000);
     setIntervalId(id);
 
@@ -84,69 +94,48 @@ const SpotifyNowPlaying = (props) => {
   return (
     <div className="text-white">
       <div className="absolute flex w-full justify-between bottom-0 p-1 z-[100]">
-        <p className="text-[13px] underline">
-          Made By Ellams, seyi.dev inspired
-        </p>
-        <a
-          className="text-[13px] underline"
-          href="https://ellamsfolio.netlify.app"
-        >
+        <p className="text-[13px] underline">Made By Ellams, seyi.dev inspired</p>
+        <a className="text-[13px] underline" href="https://ellamsfolio.netlify.app">
           My website
         </a>
       </div>
+
       {loading ? (
         <div className="flex justify-center">
-          <img
-            className="lg:pt-[120px] pt-[150px]"
-            src="img/giphy.gif"
-            alt="Loading..."
-          />
+          <img className="lg:pt-[120px] pt-[150px]" src="img/giphy.gif" alt="Loading..." />
         </div>
       ) : (
         <div className="flex justify-center h-[100%]">
           {result.isPlaying ? (
             <div className="w-full">
               <div className="z-10 w-full items-center lg:w-fit lg:left-5 absolute lg:top-5 top-3 flex">
-                <img
-                  className="h-[40px] lg:h-[60px]"
-                  src="img/newspot.png"
-                  alt="Spotify Icon"
-                />
+                <img className="h-[40px] lg:h-[60px]" src="img/newspot.png" alt="Spotify Icon" />
                 <p className="uppercase">playing from Spotify</p>
               </div>
+
               <div className="flex justify-center h-[100%]">
-                <img
-                  className="object-fill active-slide w-full h-[100vh]"
-                  src={result.albumImageUrl}
-                  alt="Album"
-                />
+                <img className="object-fill active-slide w-full h-[100vh]" src={result.albumImageUrl} alt="Album" />
               </div>
+
               <div className="absolute h-full flex flex-col justify-center items-center bottom-0 top-0 left-0 right-0 drop p-2">
                 <div className="md:w-[350px] relative flex items-center justify-center w-[90%] h-[47%]">
                   <a
                     href={`${result.songUrl}`}
-                    className="absolute top-2 right-3 bg-white w-[60px] h-[60px] rounded-[50%]
-                   flex items-center text-center justify-center text-black font-extrabold text-[14px] "
+                    className="absolute top-2 right-3 bg-white w-[60px] h-[60px] rounded-[50%] flex items-center text-center justify-center text-black font-extrabold text-[14px]"
                   >
                     <p>VISIT</p>
                   </a>
                   <div className="w-[75%] h-[80%] ">
-                    <img
-                      className="rounded-[5px] object-cover w-full h-full"
-                      src={result.albumImageUrl}
-                      alt="Album"
-                    />
+                    <img className="rounded-[5px] object-cover w-full h-full" src={result.albumImageUrl} alt="Album" />
                   </div>
                 </div>
+
                 {wave && (
                   <div className="w-[30%] md:w-[160px] flex justify-center">
-                    <img
-                      className="w-full h-[60px]"
-                      src="img/wave.gif"
-                      alt="Wave"
-                    />
+                    <img className="w-full h-[60px]" src="img/wave.gif" alt="Wave" />
                   </div>
                 )}
+
                 <div className="text-center pt-2">
                   <p className="slides uppercase">{result.artist}</p>
                   <div>
@@ -162,13 +151,9 @@ const SpotifyNowPlaying = (props) => {
               </div>
             </div>
           ) : (
-            <div className="pt-[260px]">
-              <img
-                className="h-[90px]"
-                src="img/tifylogo.png"
-                alt="Spotify Logo"
-              />
-              <p className="text-2xl">Ellams is offline</p>
+            <div className="">
+             
+             <RecentlyPlayed/>
             </div>
           )}
         </div>

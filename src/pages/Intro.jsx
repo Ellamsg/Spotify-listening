@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Intro = () => {
   return (
     <div className=" h-[100vh] flex flex-col   items-center justify-center">
-      <div className="text-center flex flex-col items-center justify-center md:[70%] lg:w-[50%]  h-[100%] text-white">
+      <div className="text-center flex flex-col px-2 md:px-4 items-center justify-center md:[70%] lg:w-[50%]  h-[100%] text-white">
         <p>
           This website showcases my currently playing songs straight from my
           Spotify playlist. Plug in your earpiece, hit play, and take a journey
