@@ -7,9 +7,6 @@ export default function RootL(){
 
 
         <div>
-
-  <Link to="/">home</Link>
-  <Link to="about">bout</Link>
   <Outlet/>
         </div>
     )

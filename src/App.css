@@ -1,7 +1,19 @@
-#root {
-  margin: 0 auto;
-overflow: hidden;
-  text-align: center;
+:root{
+  --color-accent: rgb(230, 170, 40)
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
 }
 
 
+
+.active-slide {
+  background: #000;
+  opacity: 0.95;
+  filter: blur(90px);
+ 
+  
+}
